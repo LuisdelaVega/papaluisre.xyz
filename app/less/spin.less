@@ -1,0 +1,88 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
+
+// ============================================ VAR
+
+@D:380px; // size control // diametro
+
+@R:(@D/2); // radio
+
+@B:(@R/8);
+
+@O: 0.6; // opacity
+
+@A: 3s; // accelerate
+
+html,
+body{
+  height: 100%;
+}
+
+body{
+  overflow: hidden;
+}
+
+.spin{
+  color: rgb(220,220,226);
+  position:absolute;
+  top:50%; left:50%;
+  margin-left:-@R;
+  margin-top:-@R;
+  width:@D;
+  height:@D;
+  text-align:center;
+  font-family: 'Open Sans', sans-serif;
+  font-size:@R/5;
+  line-height:@D;
+  -webkit-font-smoothing: antialiased;
+}
+
+.spin:after,
+.spin:before{
+  content:"";
+  border-radius:100%;
+  position:absolute;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  transform-origin:center center;
+}
+
+.spin:after{
+  box-shadow: inset 0 @B 0 rgba(250, 180, 0, @O),
+              inset @B 0 0 rgba(250, 40, 0, @O),
+              inset 0 -@B 0 rgba(250, 50, 0, @O),
+              inset -@B 0 0 rgba(250, 40, 0, @O);
+  animation: rotar @A -0.5s linear infinite;
+}
+
+.spin:before{
+  box-shadow: inset 0 @B 0 rgba(0, 80, 250, @O),
+              inset @B 0 0 rgba(0, 200, 200, @O),
+              inset 0 -@B 0 rgba(0, 150, 200, @O),
+              inset -@B 0 0 rgba(0, 20, 250, @O);
+  animation: rotarIz @A -0.5s linear infinite;
+}
+
+@keyframes rotar{
+  0%{
+    transform:rotateZ(0deg) scaleX(1) scaleY(1);
+  }
+  50%{
+    transform:rotateZ(180deg) scaleX(0.82) scaleY(0.95);
+  }
+  100%{
+    transform:rotateZ(360deg) scaleX(1) scaleY(1);
+  }
+}
+
+@keyframes rotarIz{
+  0%{
+    transform:rotateZ(0deg) scaleX(1) scaleY(1);
+  }
+  50%{
+    transform:rotateZ(-180deg) scaleX(0.95) scaleY(0.85);
+  }
+  100%{
+    transform:rotateZ(-360deg) scaleX(1) scaleY(1);
+  }
+}
