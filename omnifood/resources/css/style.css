@@ -198,8 +198,8 @@ a:active {
 /*--------------------------------------------------------------*/
 
 header {
-    background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/hero.jpg);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/hero.jpg); /*This is like putting 2 backgrounds on top of each other. The gradient takes in 2 colors and goes from one color to the other. I chose black to black and gave it 70% transparency*/
+    background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/hero-min.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/hero-min.jpg); /*This is like putting 2 backgrounds on top of each other. The gradient takes in 2 colors and goes from one color to the other. I chose black to black and gave it 70% transparency*/
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -288,6 +288,19 @@ header {
 
 .sticky .logo-black {
     display: block;
+}
+
+/* Mobile navi */
+.mobile-nav-icon {
+    float: right;
+    margin-top: 30px;
+    cursor: pointer;
+    display: none;
+}
+
+.mobile-nav-icon i {
+    font-size: 200%;
+    color: #fff;
 }
 
 /*--------------------------------------------------------------*/
@@ -411,8 +424,8 @@ header {
 /* TESTIMONIALS */
 /*--------------------------------------------------------------*/
 .section-testimonials {
-    background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(img/back-customers.jpg);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(img/back-customers.jpg);
+    background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(img/back-customers-min.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(img/back-customers-min.jpg);
     background-size: cover;
     background-position: center;
     color: #fff;
