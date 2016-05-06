@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('stocksapp.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -41,16 +41,49 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-})
+// When using scope to declare variables, functions, etc. They become shared between your JavaScript and HTML
+.controller('MyStocksCtrl', ['$scope',
+  function($scope) {
+    $scope.myStocksArray = [
+      {ticker: "AAPL"},
+      {ticker: "GPRO"},
+      {ticker: "FB"},
+      {ticker: "NFLX"},
+      {ticker: "TSLA"},
+      {ticker: "BRK-A"},
+      {ticker: "INTC"},
+      {ticker: "MSFT"},
+      {ticker: "GE"},
+      {ticker: "BAC"},
+      {ticker: "C"},
+      {ticker: "T"}
+    ];
+  }
+])
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+.controller('StockCtrl', ['$scope', '$stateParams', 'stockDataService',
+  function($scope, $stateParams, stockDataService) {
+    $scope.ticker = $stateParams.stockTicker;
+
+    $scope.$on("$ionicView.afterEnter", function () {
+      getPriceData();
+      getDetailsData();
+    });
+
+    function getPriceData () {
+      var promise = stockDataService.getPriceData($scope.ticker);
+
+      promise.then(function (data) {
+        console.log(data);
+      });
+    }
+
+    function getDetailsData () {
+      var promise = stockDataService.getDetailsData($scope.ticker);
+
+      promise.then(function (data) {
+        console.log(data);
+      });
+    }
+  }
+]);

@@ -1,10 +1,15 @@
-// Ionic Starter App
-
 // angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// 'stocksapp' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+// 'stocksapp.controllers' is found in controllers.js
+angular.module('stocksapp',
+  [
+    'ionic',
+    'stocksapp.controllers',
+    'stocksapp.services',
+    'stocksapp.filters',
+    'stocksapp.directives'
+  ])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -27,47 +32,32 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
     .state('app', {
     url: '/app',
-    abstract: true,
+    abstract: true, // Means you cant navigate to this state directly (good for sidebars)
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
-
-  .state('app.browse', {
-      url: '/browse',
+  // These are children of the app state and can access the code on the AppCtrl object. That's why they don't need their own controller
+  // The name is the giveaway ie., app.blah
+    .state('app.myStocks', {
+      url: '/my-stocks',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
-      }
-    })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+          templateUrl: 'templates/my-stocks.html',
+          controller: 'MyStocksCtrl'
         }
       }
     })
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
+  .state('app.stock', {
+    url: '/:stockTicker',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/stock.html',
+        controller: 'StockCtrl'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/my-stocks');
 });
