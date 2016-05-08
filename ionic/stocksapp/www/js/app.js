@@ -5,6 +5,8 @@
 angular.module('stocksapp',
   [
     'ionic',
+    'nvd3',
+    'nvChart',
     'stocksapp.controllers',
     'stocksapp.services',
     'stocksapp.filters',
