@@ -95,5 +95,7 @@ angular.module('stocksapp.controllers', [])
         $scope.stockDetailsData = data;
       });
     }
+
+    
   }
 ]);
